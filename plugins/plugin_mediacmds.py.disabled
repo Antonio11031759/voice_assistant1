@@ -1,0 +1,24 @@
+# TTS plugin for mediacmds engine (DISABLED)
+# author: Vladislav Janvarev
+# 
+# Этот плагин отключен, так как требует:
+# - pyautogui (не работает в headless окружении)
+# - активный X-сервер (DISPLAY)
+# 
+# Для серверной установки используйте другие плагины TTS
+
+from vacore import VACore
+
+modname = "plugin_mediacmds_disabled"
+
+def start(core:VACore):
+    manifest = {
+        "name": "TTS mediacmds (DISABLED)",
+        "version": "0.0",
+        "require_online": False,
+        "description": "Плагин отключен для серверной установки"
+    }
+    return manifest
+
+def start_with_options(core:VACore, manifest:dict):
+    pass

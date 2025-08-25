@@ -14,7 +14,7 @@
     "replyNoCommandFoundInContext": "Не поняла...",
     "replyOnlineRequired": "Нужен онлайн",
     "tempDir": "temp",
-    "ttsEngineId": "pyttsx",
+    "ttsEngineId": "silero_v3",
     "ttsEngineId2": "",
     "useTTSCache": false,
     "v": "1.7",

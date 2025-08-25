@@ -1,4 +1,4 @@
-# Playwav plugin for audioplayer engine
+# Playwav plugin for audioplayer engine (DISABLED - requires gi/GTK)
 # author: Vladislav Janvarev
 
 import os
