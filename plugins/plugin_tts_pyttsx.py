@@ -21,7 +21,9 @@ TTS через pyttsx.
 """,
 
         "default_options": {
-            "sysId": 0, # id голоса в системе, может варьироваться
+            "sysId": 0, # id голоса в системе (резервный)
+            "rate": 150, # скорость речи
+            "volume": 0.9, # громкость
         },
 
         "tts": {
@@ -45,7 +47,10 @@ def init(core:VACore):
 
 
     voices = core.ttsEngine.getProperty("voices")
-    #print(voices[0].id)
+    
+    print(f"PyTTSx: Найдено голосов: {len(voices)}")
+    for i, voice in enumerate(voices):
+        print(f"  {i}: {voice.id} - {voice.name} ({voice.languages})")
 
     # if assistant.speech_language == "en":
     #     assistant.recognition_language = "en-US"
@@ -58,9 +63,27 @@ def init(core:VACore):
     # else:
     #     assistant.recognition_language = "ru-RU"
 
-    # Microsoft Irina Desktop - Russian
-    core.ttsEngine.setProperty("voice", voices[options["sysId"]].id)
-    core.ttsEngine.setProperty("volume", 1.0)
+    # Ищем лучший русский женский голос
+    best_voice_index = options["sysId"]
+    for i, voice in enumerate(voices):
+        voice_info = str(voice.languages).lower() + " " + str(voice.name).lower()
+        if any(lang in voice_info for lang in ["russian", "ru", "русский", "рус"]):
+            if any(gender in voice_info for gender in ["female", "женский", "жен"]):
+                best_voice_index = i
+                print(f"PyTTSx: Найден русский женский голос: {voice.name}")
+                break
+            else:
+                best_voice_index = i
+                print(f"PyTTSx: Найден русский голос: {voice.name}")
+                break
+    
+    # Устанавливаем голос и параметры
+    core.ttsEngine.setProperty("voice", voices[best_voice_index].id)
+    core.ttsEngine.setProperty("rate", options.get("rate", 150))
+    core.ttsEngine.setProperty("volume", options.get("volume", 0.9))
+    
+    print(f"PyTTSx: Использую голос: {voices[best_voice_index].name}")
+    print(f"PyTTSx: Скорость: {options.get('rate', 150)}, Громкость: {options.get('volume', 0.9)}")
 
 def say(core:VACore, text_to_speech:str):
     """
