@@ -1,0 +1,7 @@
+{
+    "is_active": false,
+    "client_id": "",
+    "client_secret": "",
+    "redirect_uri": "http://localhost:5003/spotify_callback",
+    "auth_code": ""
+}

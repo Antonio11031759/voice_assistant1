@@ -1,0 +1,6 @@
+{
+    "is_active": false,
+    "base_url": "http://localhost:8123",
+    "access_token": "",
+    "default_room": "гостиная"
+}
