@@ -24,14 +24,14 @@ def start(core:VACore):
         "require_online": False,
 
         "default_options": {
-            "speaker": "baya",
+            "speaker": "xenia",
             "threads": 4,
             "sample_rate": 48000,
             "put_accent": True,
             "put_yo": True,
             "speaker_by_assname": {
-                "ирина|ирины|ирину": "baya",
-                "альбина|альбине": "xenia",
+                "ирина|ирины|ирину": "xenia",
+                "альбина|альбине": "baya",
                 "николай|николаю": "aidar"
             }
         },
