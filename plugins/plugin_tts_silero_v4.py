@@ -20,7 +20,7 @@ modname = os.path.basename(__file__)[:-3] # calculating modname
 def start(core:VACore):
     manifest = {
         "name": "TTS silero V4",
-        "version": "2.0",
+        "version": "2.1",
         "require_online": False,
 
         "default_options": {
